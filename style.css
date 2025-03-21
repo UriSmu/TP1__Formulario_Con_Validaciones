@@ -41,7 +41,7 @@ body {
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }
 
-/* Estilo del formulario */
+
 form {
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ form {
   align-items: center;
 }
 
-/* Campos de texto */
+
 input[type="text"], input[type="password"] {
   padding: 12px;
   border: 2px solid #ccc;
@@ -87,7 +87,7 @@ input[type="submit"]:hover {
   transform: scale(1.05);
 }
 
-/* Botones de mostrar/ocultar */
+
 .mostrar {
   padding: 6px 10px;
   font-size: 14px;
@@ -97,7 +97,7 @@ input[type="submit"]:hover {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: 5px; /* Asegura que los botones estén un poco más abajo */
+  margin-top: 5px;
 }
 
 .mostrar:hover {
@@ -110,28 +110,14 @@ input[type="submit"]:hover {
   box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.5);
 }
 
-/* Mensajes de validación */
+
 p {
   font-size: 14px;
   margin: 0;
-  transition: color 0.3s ease;
 }
 
-p#error {
-  color: red;
-  font-weight: bold;
-}
 
-p#success {
-  color: green;
-  font-weight: bold;
-}
 
-input[type="text"]:invalid, input[type="password"]:invalid {
-  border-color: red;
-}
-
-/* Responsividad */
 @media (max-width: 600px) {
   form {
       width: 90%;
