@@ -85,7 +85,6 @@ const EnviarFormulario = (e) =>
     }
     else
     {
-        localStorage.setItem(nombre, );
         alert(`Bienvenido, ${nombre}`);
     }
 }
@@ -94,12 +93,19 @@ const EnviarFormulario = (e) =>
 
 function CambiarModoOscuro() 
 {
-    var element = document.body;
+    let element = document.body;
     element.classList.toggle("dark-mode");
 }
 
-function pass(){ document.getElementById('contraseña').type="password"; } 
-function text(){ document.getElementById('contraseña').type="text"; }
+function togglePasswordVisibility(id) 
+{
+    let passwordField = document.getElementById(id);
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
 
 
 

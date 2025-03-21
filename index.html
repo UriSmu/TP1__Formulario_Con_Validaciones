@@ -7,16 +7,17 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <button onclick="CambiarModoOscuro()">☀️/🌑</button>
+    <button onclick="CambiarModoOscuro()" class="tema">☀️/🌑</button>
     <form id="formulario">
         <input type="text" name="nombreCompleto" id="nombreCompleto" placeholder="Ingrese su nombre completo" onkeyup="VerificarNombre(this.value)">
         <p id="tresCaracteres"></p>
         <input type="text" name="email" id="email" placeholder="Ingrese su email" onkeyup="VerificarEmail(this.value)">
         <p id="formatoValido"></p>
         <input type="password" name="contraseña" id="contraseña" placeholder="Ingrese su contraseña" onkeyup="VerificarContraseña(this.value)">
-        <button class="ui-component__password-field__show-hide" type="button" onclick="text()">Show</button>
+        <button type="button" onclick="togglePasswordVisibility('contraseña')" class="mostrar">Mostrar/Ocultar</button>
         <p id="contraseñaValida"></p>
         <input type="password" name="confirmarContraseña" id="confirmarContraseña" placeholder="Confirme su contraseña" onkeyup="VerificarContraseñaIgual(this.value)">
+        <button type="button" onclick="togglePasswordVisibility('confirmarContraseña')" class="mostrar">Mostrar/Ocultar</button>
         <p id="contraseñaIgual"></p>
         <input type="submit" value="Crear cuenta" onclick="EnviarFormulario(event)">
         <p id="enviar"></p>
