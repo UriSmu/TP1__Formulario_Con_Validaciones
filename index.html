@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    
+    <button onclick="CambiarModoOscuro()">☀️/🌑</button>
+    <form id="formulario">
+        <input type="text" name="nombreCompleto" id="nombreCompleto" placeholder="Ingrese su nombre completo" onkeyup="VerificarNombre(this.value)">
+        <p id="tresCaracteres"></p>
+        <input type="text" name="email" id="email" placeholder="Ingrese su email" onkeyup="VerificarEmail(this.value)">
+        <p id="formatoValido"></p>
+        <input type="password" name="contraseña" id="contraseña" placeholder="Ingrese su contraseña" onkeyup="VerificarContraseña(this.value)">
+        <button class="ui-component__password-field__show-hide" type="button" onclick="text()">Show</button>
+        <p id="contraseñaValida"></p>
+        <input type="password" name="confirmarContraseña" id="confirmarContraseña" placeholder="Confirme su contraseña" onkeyup="VerificarContraseñaIgual(this.value)">
+        <p id="contraseñaIgual"></p>
+        <input type="submit" value="Crear cuenta" onclick="EnviarFormulario(event)">
+        <p id="enviar"></p>
+    </form>
+
     <script src="script.js"></script>
 </body>
 </html>

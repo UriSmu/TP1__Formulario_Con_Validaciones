@@ -1,145 +1,141 @@
-//1
-/*
-const nombre = prompt('Hola. Ingrese su nombre: ');
-console.log(`Hola, ${nombre}, bienvenido a nuestro programa.`);
-*/
-
-//2
-/*
-const num1 = parseFloat(prompt('Ingrese un número: '));
-const num2 = parseFloat(prompt('Ingrese otro número: '));
-console.log(`Suma: ${num1 + num2}`);
-console.log(`Resta: ${num1 - num2}`);
-console.log(`Multiplicación: ${num1 * num2}`);
-if(num2 != 0)
+function VerificarNombre(valor)
 {
-    console.log(`División: ${num1 / num2}`);
-}
-else
-{
-    console.log('El 2do número es 0, por lo que no se puede ejecutar la división');
-}
-*/
+    let tresCaracteres = document.getElementById("tresCaracteres");
+    let mensaje = "Debe tener al menos 3 caracteres";
 
-//3
-/*
-const num = parseInt(prompt('Ingrese un número: '));
-if(num % 2 == 0)
-{
-    console.log(`El número ${num} es par`);
-}
-else
-{
-    console.log(`El número ${num} es impar`);
-}
-*/
-
-//4
-/*
-const palabra = prompt('Ingrese una palabra: ');
-console.log(`La palabra "${palabra}" tiene ${palabra.length} caracteres`);
-*/
-
-//5
-/*
-const frase = prompt('Ingrese una frase: ');
-const cant = parseInt(prompt('Ingrese la cantidad de veces a repetir la frase: '));
-for(let i = 1; i <= cant; i++)
-{
-    console.log(frase);
-}
-*/
-
-//6
-/*
-const num = parseInt(prompt('Ingrese un número: '));
-for(let i = 1; i <= 10; i++)
-{
-    console.log(`${i}: ${num * i}`);
-}
-*/
-
-//7
-/*
-function getRandomInt(min, max) 
-{
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-}
-
-const random = getRandomInt(1, 11);
-console.log("Recuerde ingresar números del 1 al 10");
-let correcto = false;
-let intento;
-
-do
-{
-    intento = parseInt(prompt('Adivine: ¿Cuál es el número?'));
-    if(intento == random)
+    if(!ValidarNombre(valor))
     {
-        correcto = true;
-    }
-    else if(intento > random)
-    {
-        console.log(`El número es menor a ${intento}`);
+        tresCaracteres.style.color = "red";
+        tresCaracteres.innerHTML=mensaje;
     }
     else
     {
-        console.log(`El número es mayor a ${intento}`);
+        mensaje = "";
+        tresCaracteres.innerHTML=mensaje;
     }
-}while(!correcto)
+}
 
-console.log(`Ganaste! El número era ${random}`);
-*/
-
-//8
-/*
-const palabra = prompt('Ingrese una palabra: ').toLowerCase();
-let char;
-let cant = 0;
-for(let i = 0; i < palabra.length; i++)
+function VerificarEmail(valor)
 {
-    char = palabra[i];
-    if (char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u')
+    let formatoValido = document.getElementById("formatoValido");
+    let mensaje = "Debe tener un formato 'Email' válido";
+
+    if(!ValidarEmail(valor))
     {
-        cant++;
+        formatoValido.style.color = "red";
+        formatoValido.innerHTML=mensaje;
+    }
+    else
+    {
+        mensaje = "";
+        formatoValido.innerHTML=mensaje;
     }
 }
-console.log(`La palabra "${palabra}" tiene ${cant} vocales.`);
-*/
 
-//9
-/*
-const palabra = prompt('Ingrese una palabra: ');
-let char;
-let alReves = "";
-
-for(let i = (palabra.length - 1); i >= 0; i--)
+function VerificarContraseña(valor)
 {
-    char = palabra[i];
-    alReves+=char;
+    let formatoValido = document.getElementById("contraseñaValida");
+    let mensaje = "La contraseña debe contener mínimo 8 caracteres, y al menos un número y una letra";
+
+    if(!ValidarContrasena(valor))
+    {
+        formatoValido.style.color = "red";
+        formatoValido.innerHTML=mensaje;
+    }
+    else
+    {
+        mensaje = "";
+        formatoValido.innerHTML=mensaje;
+    }
 }
 
-console.log(`${palabra} --> ${alReves}`);
-*/
-
-//10
-const palabra = prompt('Ingrese una palabra: ');
-let char;
-let alReves = "";
-
-for(let i = (palabra.length - 1); i >= 0; i--)
+function VerificarContraseñaIgual(valor)
 {
-    char = palabra[i];
-    alReves+=char;
+    let formatoValido = document.getElementById("contraseñaIgual");
+    let contraseña = document.getElementById("contraseña").value;
+    let mensaje = "La contraseña debe ser igual a la anterior";
+
+    if(!ValidarContrasenaIgual(contraseña, valor))
+    {
+        formatoValido.style.color = "red";
+        formatoValido.innerHTML=mensaje;
+    }
+    else
+    {
+        mensaje = "";
+        formatoValido.innerHTML=mensaje;
+    }
 }
 
-if(alReves == palabra)
+const EnviarFormulario = (e) =>
 {
-    console.log(`La palabra ${palabra} es palíndroma.`)
+    let mensajeLugar = document.getElementById("enviar");
+    const mensaje = "Todos los datos deben ser válidos";
+
+    const nombre = document.getElementById("nombreCompleto").value;
+    const email = document.getElementById("email").value;
+    const contrasena = document.getElementById("contraseña").value;
+    const confirmacion = document.getElementById("confirmarContraseña").value;
+
+    if(!(ValidarNombre(nombre) && ValidarEmail(email) && ValidarContrasena(contrasena) && ValidarContrasenaIgual(contrasena, confirmacion)))
+    {
+        e.preventDefault();
+        mensajeLugar.style.color = "red";
+        mensajeLugar.innerHTML=mensaje;
+    }
+    else
+    {
+        localStorage.setItem(nombre, );
+        alert(`Bienvenido, ${nombre}`);
+    }
 }
-else
+
+
+
+function CambiarModoOscuro() 
 {
-    console.log(`La palabra ${palabra} no es palíndroma.`)
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+}
+
+function pass(){ document.getElementById('contraseña').type="password"; } 
+function text(){ document.getElementById('contraseña').type="text"; }
+
+
+
+
+
+//BUSQUÉ EN LA WEB UNA FUNCIÓN QUE VALIDE EL FORMATO DE LOS EMAILS, Y DE LAS CONTRASEÑAS
+function ValidarEmail(email) 
+{
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return regex.test(email);
+}
+function ValidarContrasena(contrasena) {
+    const regex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+    return regex.test(contrasena);
+}
+
+
+function ValidarNombre(nombre)
+{
+    if(nombre.length < 3)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+function ValidarContrasenaIgual(contrasena, repeticion)
+{
+    if(contrasena !== repeticion)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
